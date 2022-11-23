@@ -31,15 +31,15 @@ if [ $opt == "y" ]
 then
     read -p "your bot api key: " YourAPIKey
     read -p "Your User ID or Channel ID: " YourUserOrChannelID
-    sudo sed -n 's/YourAPIKey/$YourAPIKey/g' $TELEGRAM_DIR/conf/telegram-notify.conf
-    sudo sed -n 's/YourUserOrChannelID/$YourUserOrChannelID/g' $TELEGRAM_DIR/conf/telegram-notify.conf
+    sudo sed -i -e "s/YourAPIKey/$YourAPIKey/g" $TELEGRAM_DIR/conf/telegram-notify.conf
+    sudo sed -i -e "s/YourUserOrChannelID/$YourUserOrChannelID/g" $TELEGRAM_DIR/conf/telegram-notify.conf
 fi
 
 read -p "do you want to configuration disk threshold now? Enter [y/n] : " opt
 if [ $opt == "y" ]
 then
     read -p "disk threshold %: " THRESHOLD
-    sudo sed -n 's/thres/$THRESHOLD/g' $SCRIPTS_DIR/storage-warning-telegram.sh
+    sudo sed -i -e "s/thres/$THRESHOLD/g" $SCRIPTS_DIR/storage-warning-telegram.sh
 fi
 
 echo "instalation complete"
